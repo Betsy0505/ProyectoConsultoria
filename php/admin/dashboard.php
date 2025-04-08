@@ -10,6 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 // Mostrar bienvenida al usuario
 echo "¡Hola admin " . $_SESSION['nombre'] . "! Has iniciado sesión correctamente.";
 ?>
+<br>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -54,18 +55,22 @@ echo "¡Hola admin " . $_SESSION['nombre'] . "! Has iniciado sesión correctamen
                     <!-- Sección de Registrar Cliente -->
                     <div class="tab-pane fade show active" id="clientes">
                         <h3>Registrar Cliente</h3>
-                        <form action="registro_cliente.php" method="POST">
+                        <form action="../php/registrp_cliente.php" method="POST">
                             <div class="mb-3">
-                                <label for="nombre_cliente" class="form-label">Nombre Cliente</label>
+                                <label for="nombre_cliente" class="form-label">Nombre Completo</label>
                                 <input type="text" class="form-control" id="nombre_cliente" name="nombre_cliente" required>
                             </div>
                             <div class="mb-3">
-                                <label for="email_cliente" class="form-label">Correo Electrónico</label>
-                                <input type="email" class="form-control" id="email_cliente" name="email_cliente" required>
+                                <label for="email_cliente" class="form-label">Correo</label>
+                                <input type="text" class="form-control" id="email_cliente" name="email_cliente" required>
                             </div>
                             <div class="mb-3">
-                                <label for="telefono_cliente" class="form-label">Teléfono</label>
-                                <input type="text" class="form-control" id="telefono_cliente" name="telefono_cliente" required>
+                                <label for="usuario_cliente" class="form-label">Usuario</label>
+                                <input type="text" class="form-control" id="usuario_cliente" name="usuario_cliente" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="pwd_cliente" class="form-label">Contraseña</label>
+                                <input type="text" class="form-control" id="pwd_cliente" name="pwd_cliente" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Registrar Cliente</button>
                         </form>
@@ -84,8 +89,8 @@ echo "¡Hola admin " . $_SESSION['nombre'] . "! Has iniciado sesión correctamen
                                 <textarea class="form-control" id="descripcion_servicio" name="descripcion_servicio" required></textarea>
                             </div>
                             <div class="mb-3">
-                                <label for="precio_servicio" class="form-label">Precio</label>
-                                <input type="number" class="form-control" id="precio_servicio" name="precio_servicio" required>
+                                <label for="icono_servicio" class="form-label">Icono</label>
+                                <input type="text" class="form-control" id="icono_servicio" name="icono_servicio" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Agregar Servicio</button>
                         </form>
