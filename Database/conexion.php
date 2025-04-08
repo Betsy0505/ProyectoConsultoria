@@ -1,9 +1,9 @@
 <?php
+$host = '198.59.144.12'; 
+$dbname = 'bytekodc_bd_betsy';
+$username = 'bytekodc_betsy';
+$password = 'J0pnQV1M!@d2';
 
-$host = 'localhost'; 
-$dbname = 'bytekod_consultoria';
-$username = 'root';
-$password = '';
 
 try {
     $conn = new mysqli($host, $username, $password, $dbname);
