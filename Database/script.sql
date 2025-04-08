@@ -25,3 +25,10 @@ VALUES (
     'admin@example.com', 
     'admin'
 );
+
+CREATE TABLE servicios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion TEXT NOT NULL,
+    icono VARCHAR(10) NOT NULL
+);
