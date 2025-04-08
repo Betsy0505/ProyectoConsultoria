@@ -12,9 +12,18 @@
             <h1>Bienvenido</h1>
             <p>Ingresa tus credenciales para continuar</p>
         </div>
-        
+
         <div class="login-body">
-            <form action="/login" method="POST">
+
+            <?php
+                session_start();
+                if (isset($_SESSION['error'])) {
+                    echo '<div style="color: red; margin-bottom: 10px;">' . $_SESSION['error'] . '</div>';
+                    unset($_SESSION['error']); // Limpia el mensaje después de mostrarlo
+                }
+            ?>
+
+            <form action="../php/login.php" method="POST">
                 <div class="input-group">
                     <label for="username">Usuario</label>
                     <input type="text" id="username" name="username" placeholder="Ingresa tu usuario" required>
@@ -36,10 +45,6 @@
                 </div>
                 
                 <button type="submit" class="login-button">Iniciar Sesión</button>
-                
-                <div class="login-footer">
-                    ¿No tienes una cuenta? <a href="#">Regístrate</a>
-                </div>
             </form>
         </div>
     </div>
