@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../css/landing_page.css">
     <title>Consultoría HTML - Soluciones Web Profesionales</title>
 </head>
@@ -17,7 +18,7 @@
                     <li><a href="#mision">Misión</a></li>
                     <li><a href="#vision">Visión</a></li>
                     <li><a href="#valores">Valores</a></li>
-                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#services">Servicios</a></li>
                     <li><a href="#clientes">Clientes</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                     <li><a href="../Templates/login.php" class="btn btn-outline">Ingresar</a></li>
@@ -59,44 +60,45 @@
         </div>
     </section>
 
+    <?php
+        // Incluir el archivo de conexión
+        include '../Database/conexion.php';
+
+        // Realizar la consulta para obtener los servicios
+        $sql = "SELECT * FROM servicios";
+        $resultado = $pdo->query($sql);
+
+        // Asegurarnos de que la consulta fue exitosa y que hay resultados
+        $servicios = $resultado->fetchAll(PDO::FETCH_ASSOC);
+        
+        // Verificar si la consulta devolvió resultados
+        if (!$servicios) {
+            echo "No se encontraron servicios disponibles.";
+        }
+    ?>
+
     <!-- Servicios -->
-    <section id="servicios" class="services">
-        <div class="container">
-            <h2 class="section-title">Servicios Especializados</h2>
-            <div class="grid-3">
-                <div class="card">
-                    <div class="service-icon">🛠️</div>
-                    <h3>Desarrollo Frontend</h3>
-                    <p>Interfaces reactivas y accesibles construidas con las últimas tecnologías web.</p>
+    <div id="servicios">
+    <h2>Nuestros Servicios</h2>
+
+    <!-- Verificar si hay servicios antes de iterar sobre ellos -->
+    <?php if (!empty($servicios)): ?>
+        <?php foreach ($servicios as $servicio): ?>
+            <div class="servicio">
+                <!-- Mostrar el ícono (el HTML del ícono) -->
+                <div class="icono">
+                    <?php echo $servicio['icono']; ?>
                 </div>
-                <div class="card">
-                    <div class="service-icon">⚡</div>
-                    <h3>Optimización</h3>
-                    <p>Aceleramos tu sitio web sin sacrificar calidad o funcionalidad.</p>
-                </div>
-                <div class="card">
-                    <div class="service-icon">🎯</div>
-                    <h3>Desarrollo de Software</h3>
-                    <p>Desarrollo de Soluciones Empresariales sistematizando tus Procesos de Negocio.</p>
-                </div>
-                <div class="card">
-                    <div class="service-icon">📲</div>
-                    <h3>Aplicaciones móviles</h3>
-                    <p>Diseño y desarrollo de Aplicaciones Móviles que te permitirán mantenerte cerca y en contacto con tus clientes.</p>
-                </div>
-                <div class="card">
-                    <div class="service-icon">🎨</div>
-                    <h3>Diseño Gráfico</h3>
-                    <p>Creación de diseños creativos orientados a tus clientes considerando tu imagen corporativa.</p>
-                </div>
-                <div class="card">
-                    <div class="service-icon">🛒</div>
-                    <h3>E-Commerce</h3>
-                    <p>Implementamos tu carrito en línea mostrando tus productos en tu propio sitio web.</p>
-                </div>
+                <!-- Mostrar el nombre y la descripción -->
+                <h3><?php echo htmlspecialchars($servicio['nombre']); ?></h3>
+                <p><?php echo htmlspecialchars($servicio['descripcion']); ?></p>
             </div>
-        </div>
-    </section>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p>No hay servicios disponibles.</p>
+    <?php endif; ?>
+</div>
+
 
     <!-- Clientes -->
     <section id="clientes">

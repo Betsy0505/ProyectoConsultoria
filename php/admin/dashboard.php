@@ -79,7 +79,7 @@ echo "¡Hola admin " . $_SESSION['nombre'] . "! Has iniciado sesión correctamen
                     <!-- Sección de Agregar Servicios -->
                     <div class="tab-pane fade" id="servicios">
                         <h3>Agregar Servicio</h3>
-                        <form action="agregar_servicio.php" method="POST">
+                        <form action="../agregar_servicio.php" method="POST">
                             <div class="mb-3">
                                 <label for="nombre_servicio" class="form-label">Nombre del Servicio</label>
                                 <input type="text" class="form-control" id="nombre_servicio" name="nombre_servicio" required>
@@ -87,10 +87,6 @@ echo "¡Hola admin " . $_SESSION['nombre'] . "! Has iniciado sesión correctamen
                             <div class="mb-3">
                                 <label for="descripcion_servicio" class="form-label">Descripción del Servicio</label>
                                 <textarea class="form-control" id="descripcion_servicio" name="descripcion_servicio" required></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="icono_servicio" class="form-label">Icono</label>
-                                <input type="text" class="form-control" id="icono_servicio" name="icono_servicio" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Agregar Servicio</button>
                         </form>
