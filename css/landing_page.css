@@ -219,13 +219,44 @@ section {
 
 /* --- Servicios --- */
 .services {
-    background-color: var(--gray-light);
+    background-color: var(--gray-light); /* Fondo claro */
+    padding: 40px 0; /* Espaciado alrededor de la sección */
+}
+
+.service-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Cambiado a 3 columnas */
+    gap: 30px; /* Espacio entre los servicios */
+    justify-items: center; /* Alineación central de los servicios */
+}
+
+.servicio {
+    background-color: white; /* Fondo blanco para cada servicio */
+    padding: 20px;
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    text-align: center; /* Centrado de texto */
+    transition: transform 0.3s ease; /* Transición para efectos de hover */
+}
+
+.servicio:hover {
+    transform: translateY(-10px); /* Efecto de hover */
 }
 
 .service-icon {
-    font-size: 40px;
-    margin-bottom: 20px;
-    color: var(--accent);
+    font-size: 40px; /* Tamaño grande para los íconos */
+    margin-bottom: 20px; /* Espaciado debajo del ícono */
+    color: var(--accent); /* Color de íconos según la variable de color */
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+p {
+    color: #666; /* Color gris para la descripción */
+    font-size: 1rem;
 }
 
 /* --- Clientes --- */

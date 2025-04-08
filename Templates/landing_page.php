@@ -78,22 +78,24 @@
     ?>
 
     <!-- Servicios -->
-    <div id="servicios">
-    <h2>Nuestros Servicios</h2>
+    <div id="servicios" class="services">
+    <h2 class="section-title">Nuestros Servicios</h2>
 
     <!-- Verificar si hay servicios antes de iterar sobre ellos -->
     <?php if (!empty($servicios)): ?>
-        <?php foreach ($servicios as $servicio): ?>
-            <div class="servicio">
-                <!-- Mostrar el ícono (el HTML del ícono) -->
-                <div class="icono">
-                    <?php echo $servicio['icono']; ?>
+        <div class="service-container">
+            <?php foreach ($servicios as $servicio): ?>
+                <div class="servicio">
+                    <!-- Mostrar el ícono -->
+                    <div class="service-icon">
+                        <?php echo $servicio['icono']; ?>
+                    </div>
+                    <!-- Mostrar el nombre y la descripción -->
+                    <h3><?php echo htmlspecialchars($servicio['nombre']); ?></h3>
+                    <p><?php echo htmlspecialchars($servicio['descripcion']); ?></p>
                 </div>
-                <!-- Mostrar el nombre y la descripción -->
-                <h3><?php echo htmlspecialchars($servicio['nombre']); ?></h3>
-                <p><?php echo htmlspecialchars($servicio['descripcion']); ?></p>
-            </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        </div>
     <?php else: ?>
         <p>No hay servicios disponibles.</p>
     <?php endif; ?>
