@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'C:/laragon/www/ProyectoConsultoria/Database/conexion.php';
+require_once '../Database/conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username']);

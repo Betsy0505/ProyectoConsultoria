@@ -1,5 +1,5 @@
 <?php
-include 'C:/laragon/www/ProyectoConsultoria/Database/conexion.php'; // Asegúrate de que la ruta esté correcta
+include '../Database/conexion.php'; // Asegúrate de que la ruta esté correcta
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $_POST['nombre_servicio'];

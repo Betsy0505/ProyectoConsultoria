@@ -55,7 +55,7 @@ echo "¡Hola admin " . $_SESSION['nombre'] . "! Has iniciado sesión correctamen
                     <!-- Sección de Registrar Cliente -->
                     <div class="tab-pane fade show active" id="clientes">
                         <h3>Registrar Cliente</h3>
-                        <form action="../php/registrp_cliente.php" method="POST">
+                        <form action="../registro_cliente.php" method="POST">
                             <div class="mb-3">
                                 <label for="nombre_cliente" class="form-label">Nombre Completo</label>
                                 <input type="text" class="form-control" id="nombre_cliente" name="nombre_cliente" required>

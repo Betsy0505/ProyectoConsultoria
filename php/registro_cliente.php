@@ -1,6 +1,6 @@
 <?php
 // Conexión a la base de datos
-include 'C:/laragon/www/ProyectoConsultoria/Database/conexion.php';
+include '../Database/conexion.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $_POST['nombre_cliente'];
@@ -27,8 +27,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ':activo' => $activo
         ]);
 
+        // C:/laragon/www/ProyectoConsultoria
+
         echo "✅ Cliente registrado correctamente con rol admin.";
-        echo "<br><a href='C:/laragon/www/ProyectoConsultoria/Templates/login.php'>Volver al dashboard</a>";
+        echo "<br><a href='../Templates/login.php'>Volver al dashboard</a>";
 
     } catch (PDOException $e) {
         echo "❌ Error al registrar el cliente: " . $e->getMessage();
