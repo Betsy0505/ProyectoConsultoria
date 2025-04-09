@@ -119,29 +119,41 @@
     </section>
 
     <!-- Contacto -->
-    <section id="contacto" class="contact">
-        <div class="container">
-            <h2 class="section-title">Hablemos de tu Proyecto</h2>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Información de Contacto</h3>
-                    <p>✉️ Bytekodconsultoria@gmail.com</p>
-                    <p>📞 +55 56 45 50 45 59</p>
-                    <p>📍 Estado de México, México</p>
-                    <p>🕒 Lunes a Viernes, 9:00 - 18:00</p>
-                </div>
-                <div class="contact-form">
-                    <form>
-                        <input type="text" placeholder="Nombre Completo" required>
-                        <input type="email" placeholder="Correo Electrónico" required>
-                        <input type="text" placeholder="Asunto">
-                        <textarea rows="5" placeholder="Cuéntanos sobre tu proyecto" required></textarea>
-                        <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
-                    </form>
-                </div>
+<section id="contacto" class="contact">
+    <div class="container">
+        <h2 class="section-title">Hablemos de tu Proyecto</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Información de Contacto</h3>
+                <p><i class="fas fa-envelope"></i> Bytekodconsultoria@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +55 56 45 50 45 59</p>
+                <p><i class="fas fa-map-marker-alt"></i> Estado de México, México</p>
+                <p><i class="fas fa-clock"></i> Lunes a Viernes, 9:00 - 18:00</p>
+            </div>
+            <div class="contact-form">
+                <form action="https://formspree.io/f/xdkeynzv" method="POST" id="contactForm">
+                    <input type="hidden" name="_next" value="https://consultoria.bytekod.com/gracias.html">
+                    <input type="text" name="_gotcha" style="display:none">
+                    
+                    <div class="input-group">
+                        <input type="text" name="name" placeholder="Nombre Completo" required>
+                        <input type="email" name="email" placeholder="Correo Electrónico" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="tel" name="phone" placeholder="Teléfono">
+                        <input type="text" name="subject" placeholder="Asunto">
+                    </div>
+                    <textarea name="message" rows="5" placeholder="Cuéntanos sobre tu proyecto" required></textarea>
+                    <button type="submit" class="btn btn-primary">
+                        <span class="btn-text">Enviar Mensaje</span>
+                        <span class="spinner" style="display:none;"></span>
+                    </button>
+                    <div id="formMessage" class="form-message"></div>
+                </form>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Footer -->
     <footer>
@@ -201,16 +213,65 @@
             </div>
         </div>
     </footer>
+    
     <script>
-    // Obtener el botón y la lista del menú
-    const hamburger = document.getElementById('hamburger-icon');
-    const navLinks = document.querySelector('.nav-links');
+    // Manejo del formulario de contacto
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const form = e.target;
+    const submitButton = form.querySelector('button[type="submit"]');
+    const btnText = submitButton.querySelector('.btn-text');
+    const spinner = submitButton.querySelector('.spinner');
+    const messageDiv = document.getElementById('formMessage');
+    
+    // Validación del honeypot (anti-spam)
+    if (form.querySelector('[name="_gotcha"]').value) {
+        return;
+    }
+    
+    // Estado de carga
+    btnText.textContent = 'Enviando...';
+    spinner.style.display = 'inline-block';
+    submitButton.disabled = true;
+    messageDiv.textContent = '';
+    messageDiv.className = 'form-message';
+    messageDiv.style.display = 'none';
+    
+    try {
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+        
+        if (response.ok) {
+            // Éxito
+            messageDiv.className = 'form-message success';
+            messageDiv.textContent = '¡Gracias por contactarnos! Te responderemos pronto.';
+            form.reset();
+        } else {
+            // Error de Formspree
+            const data = await response.json();
+            throw new Error(data.error || 'Error al enviar el mensaje');
+        }
+    } catch (error) {
+        // Error de red o validación
+        messageDiv.className = 'form-message error';
+        messageDiv.textContent = error.message || 'Error de conexión. Por favor intenta nuevamente.';
+        console.error('Error:', error);
+    } finally {
+        // Restaurar botón
+        btnText.textContent = 'Enviar Mensaje';
+        spinner.style.display = 'none';
+        submitButton.disabled = false;
+        messageDiv.style.display = 'block';
+    }
+});
+<script>
 
-    // Agregar un evento para abrir y cerrar el menú
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('show');
-    });
-</script>
 
 </body>
 </html>

@@ -631,3 +631,34 @@ a, button {
         font-size: 14px;
     }
 }
+
+.contact-form .input-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.contact-form .input-group input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Estilos responsive */
+@media (max-width: 768px) {
+    .contact-form .input-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
