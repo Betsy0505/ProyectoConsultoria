@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../css/landing_page.css">
     <title>Consultoría HTML - Soluciones Web Profesionales</title>
 </head>
@@ -13,11 +12,11 @@
     <header>
         <div class="container">
             <nav>
-                <a href="#" class="logo"><img src="../resources/logo.png" class="logo"></a>
-                <button class="hamburger" id="hamburger-icon">
+                <a href="#" class="logo"><img src="../resources/logo.png" alt="Bytekod Logo" class="logo"></a>
+                <button class="hamburger" id="hamburger-icon" aria-label="Menú">
                     <i class="fas fa-bars"></i>
                 </button>
-                <ul class="nav-links">
+                <ul class="nav-links" id="navLinks">
                     <li><a href="#mision">Misión</a></li>
                     <li><a href="#vision">Visión</a></li>
                     <li><a href="#valores">Valores</a></li>
@@ -102,18 +101,17 @@
     <?php else: ?>
         <p>No hay servicios disponibles.</p>
     <?php endif; ?>
-</div>
-
+    </section>
 
     <!-- Clientes -->
     <section id="clientes">
         <div class="container">
             <h2 class="section-title">Confían en Nosotros</h2>
             <div class="clients-grid">
-                <img src="../resources/paymun2.jpg" alt="Paymun" class="client-logo">
-                <img src="../resources/EscuelaNatacion.jpg" alt="EscuelaNatación" class="client-logo">
-                <img src="../resources/bytekod.jpg" alt="Bytekod" class="client-logo">
-                <img src="../resources/coreui-signet-white.png" alt="Sadvu" class="client-logo">
+                <img src="../resources/paymun2.jpg" alt="Paymun" class="client-logo" loading="lazy">
+                <img src="../resources/EscuelaNatacion.jpg" alt="Escuela de Natación" class="client-logo" loading="lazy">
+                <img src="../resources/bytekod.jpg" alt="Bytekod" class="client-logo" loading="lazy">
+                <img src="../resources/coreui-signet-white.png" alt="Sadvu" class="client-logo" loading="lazy">
             </div>
         </div>
     </section>
@@ -125,18 +123,27 @@
             <div class="contact-grid">
                 <div class="contact-info">
                     <h3>Información de Contacto</h3>
-                    <p>✉️ Bytekodconsultoria@gmail.com</p>
-                    <p>📞 +55 56 45 50 45 59</p>
-                    <p>📍 Estado de México, México</p>
-                    <p>🕒 Lunes a Viernes, 9:00 - 18:00</p>
+                    <p><i class="fas fa-envelope"></i>Bytekodconsultoria@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +55 56 45 50 45 59</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Estado de México, México</p>
+                    <p><i class="fas fa-clock"></i> Lunes a Viernes, 9:00 - 18:00</p>
                 </div>
                 <div class="contact-form">
-                    <form>
-                        <input type="text" placeholder="Nombre Completo" required>
-                        <input type="email" placeholder="Correo Electrónico" required>
-                        <input type="text" placeholder="Asunto">
-                        <textarea rows="5" placeholder="Cuéntanos sobre tu proyecto" required></textarea>
-                        <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                    <form action="https://formspree.io/f/xdkeynzv" method="POST" id="contactForm">
+                        <div class="input-group">
+                            <input type="text" name="name" placeholder="Nombre Completo" required>
+                            <input type="email" name="email" placeholder="Correo Electrónico" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="tel" name="phone" placeholder="Teléfono">
+                            <input type="text" name="subject" placeholder="Asunto">
+                        </div>
+                        <textarea name="message" rows="5" placeholder="Cuéntanos sobre tu proyecto" required></textarea>
+                        <button type="submit" class="btn btn-primary">
+                            <span class="btn-text">Enviar Mensaje</span>
+                            <span class="spinner" style="display:none;"></span>
+                        </button>
+                        <div id="formMessage" class="form-message"></div>
                     </form>
                 </div>
             </div>
@@ -172,47 +179,87 @@
                 <div class="footer-column">
                     <h3>Legal</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Términos y Condiciones</a></li>
-                        <li><a href="#">Política de Privacidad</a></li>
-                        <li><a href="#">Cookies</a></li>
+                        <li><a href="terminos.html">Términos y Condiciones</a></li>
+                        <li><a href="privacidad.html">Política de Privacidad</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Síguenos</h3>
                     <div class="social-icons">
-                        <a href="https://www.facebook.com/profile.php?id=61574809511465" target="_blank" class="social-icon" aria-label="Facebook">
+                        <a href="https://www.facebook.com/profile.php?id=61574809511465" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Facebook">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://www.linkedin.com/feed/?trk=onboarding-landing" target="_blank" class="social-icon" aria-label="LinkedIn">
+                        <a href="https://www.linkedin.com/feed/?trk=onboarding-landing" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="https://www.instagram.com/bytekodeconsultoria/" target="_blank" class="social-icon" aria-label="Instagram">
+                        <a href="https://www.instagram.com/bytekodeconsultoria/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://wa.me/5645504559" target="_blank" class="social-icon" aria-label="WhatsApp">
+                        <a href="https://wa.me/5645504559" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="WhatsApp">
                             <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>
-                    <p style="margin-top: 20px; color: rgba(255,255,255,0.7);">Conéctate con nosotros</p>
+                    <p class="footer-connect">Conéctate con nosotros</p>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 Bytekod. Todos los derechos reservados.</p>
+                <p>&copy; <span id="currentYear"></span> Bytekod. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
+
     <script>
-    // Obtener el botón y la lista del menú
-    const hamburger = document.getElementById('hamburger-icon');
-    const navLinks = document.querySelector('.nav-links');
-
-    // Agregar un evento para abrir y cerrar el menú
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('show');
+    // Manejo del formulario con Formspree
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const form = e.target;
+        const submitButton = form.querySelector('button[type="submit"]');
+        const btnText = submitButton.querySelector('.btn-text');
+        const spinner = submitButton.querySelector('.spinner');
+        const messageDiv = document.getElementById('formMessage');
+        
+        // Estado de carga
+        btnText.textContent = 'Enviando...';
+        spinner.style.display = 'inline-block';
+        submitButton.disabled = true;
+        messageDiv.textContent = '';
+        messageDiv.className = 'form-message';
+        messageDiv.style.display = 'none';
+        
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                // Éxito
+                messageDiv.className = 'form-message success';
+                messageDiv.textContent = '¡Gracias por contactarnos! Te responderemos pronto.';
+                form.reset();
+            } else {
+                // Error de Formspree
+                const data = await response.json();
+                throw new Error(data.error || 'Error al enviar el mensaje');
+            }
+        } catch (error) {
+            // Error de red o validación
+            messageDiv.className = 'form-message error';
+            messageDiv.textContent = error.message || 'Error de conexión. Por favor intenta nuevamente.';
+            console.error('Error:', error);
+        } finally {
+            // Restaurar botón
+            btnText.textContent = 'Enviar Mensaje';
+            spinner.style.display = 'none';
+            submitButton.disabled = false;
+            messageDiv.style.display = 'block';
+        }
     });
-</script>
-
+    </script>
 </body>
 </html>
-
-<!-- https://www.consultoria.bytekod.com/ -->
