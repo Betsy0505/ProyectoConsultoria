@@ -14,11 +14,14 @@
         <div class="container">
             <nav>
                 <a href="#" class="logo"><img src="../resources/logo.png" class="logo"></a>
+                <button class="hamburger" id="hamburger-icon">
+                    <i class="fas fa-bars"></i>
+                </button>
                 <ul class="nav-links">
                     <li><a href="#mision">Misión</a></li>
                     <li><a href="#vision">Visión</a></li>
                     <li><a href="#valores">Valores</a></li>
-                    <li><a href="#services">Servicios</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
                     <li><a href="#clientes">Clientes</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                     <li><a href="../Templates/login.php" class="btn btn-outline">Ingresar</a></li>
@@ -198,6 +201,17 @@
             </div>
         </div>
     </footer>
+    <script>
+    // Obtener el botón y la lista del menú
+    const hamburger = document.getElementById('hamburger-icon');
+    const navLinks = document.querySelector('.nav-links');
+
+    // Agregar un evento para abrir y cerrar el menú
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+    });
+</script>
+
 </body>
 </html>
 

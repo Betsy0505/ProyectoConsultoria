@@ -14,6 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();
 
         echo "Servicio agregado correctamente.";
+        echo "<br><a href='../Templates/landing_page.php'>Volver al dashboard</a>";
     } catch (PDOException $e) {
         echo "Error al agregar servicio: " . $e->getMessage();
     }
