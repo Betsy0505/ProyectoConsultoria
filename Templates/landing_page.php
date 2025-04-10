@@ -270,7 +270,38 @@ document.getElementById('contactForm').addEventListener('submit', async function
         messageDiv.style.display = 'block';
     }
 });
-<script>
+
+// Manejo del menú hamburguesa
+document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.getElementById('hamburger-icon');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', function() {
+            navLinks.classList.toggle('show');
+            
+            // Cambiar ícono entre hamburguesa y X
+            const icon = this.querySelector('i');
+            if (navLinks.classList.contains('show')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Cerrar menú al hacer clic en un enlace (para móviles)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    navLinks.classList.remove('show');
+                    hamburger.querySelector('i').classList.remove('fa-times');
+                    hamburger.querySelector('i').classList.add('fa-bars');
+                }
+            });
+        });
+    });
+</script>
 
 
 </body>
